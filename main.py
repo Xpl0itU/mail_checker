@@ -10,7 +10,7 @@ if __name__ == "__main__":
     with open("config.json", "r") as f:
         config = json.load(f)
     mailchecker = MailChecker(
-        os.environ["SERVER"], os.environ["EMAIL"], os.environ["PASSWORD"]
+        os.environ["SERVER"], os.environ["EMAIL"], os.environ["PASSWORD"], os.environ["FOLDER"]
     )
     mailchecker.login()
     checked_mails = mailchecker.check_list_of_mails(

@@ -3,13 +3,14 @@ from imap_tools import MailBox, AND
 
 
 class MailChecker:
-    def __init__(self, server: str, user: str, password: str) -> None:
+    def __init__(self, server: str, user: str, password: str, folder: str) -> None:
         self.server = server
         self.user = user
         self.password = password
+        self.folder = folder
 
     def login(self):
-        self.mailbox = MailBox(self.server).login(self.user, self.password)
+        self.mailbox = MailBox(self.server).login(self.user, self.password, initial_folder=self.folder)
 
     def check_mail(self, mail: str, subject: str) -> bool:
         for _ in self.mailbox.fetch(
